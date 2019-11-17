@@ -21,14 +21,14 @@ public class TapController : MonoBehaviour
     Quaternion downRotation;
     Quaternion forwardRotation;
     GameMenager game;
-   
+
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         downRotation = Quaternion.Euler(0, 0, -60);
         forwardRotation = Quaternion.Euler(0, 0, 15);
-       
+
         game = GameMenager.Instance;
         rigidbody.simulated = false;
     }
@@ -50,7 +50,7 @@ public class TapController : MonoBehaviour
     void OnGameOverConfirmed()
     {
         transform.localPosition = StartPos;
-        
+
     }
     void Update()
     {
@@ -60,7 +60,7 @@ public class TapController : MonoBehaviour
             {
             tapAudio.Play();
             transform.rotation = forwardRotation;
-            rigidbody.velocity = Vector3.zero; 
+            rigidbody.velocity = Vector3.zero;
             rigidbody.AddForce(Vector2.up * tapForce, ForceMode2D.Force );
             }
         if (Input.GetKeyDown(KeyCode.Space))

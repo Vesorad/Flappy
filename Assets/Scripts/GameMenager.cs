@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameMenager : MonoBehaviour
 {
-    
+
 
     public delegate void GameDelegate();
     public static event GameDelegate OnGameStarted;
@@ -13,11 +13,12 @@ public class GameMenager : MonoBehaviour
 
 
     public static GameMenager Instance;
-    
+
     public GameObject StartPage;
     public GameObject GameOverPage;
     public GameObject CountdownPage;
     public Text ScoreText;
+
 
     enum PageState
     {
@@ -28,14 +29,16 @@ public class GameMenager : MonoBehaviour
     }
     int score = 0;
     bool GameOver = true;
+    bool isPlaying = false;
+    
     public bool GameOver1 { get { return GameOver; }}
     public int Score { get { return score; } }
 
      void Awake()
     {
         Instance = this;
-    }
 
+    }
     void OnEnable()
     {
         CountdownText.OnCountdownFinished += OnCountdownFinished;
@@ -61,13 +64,17 @@ public class GameMenager : MonoBehaviour
     }
     void OnPlayerDied()
     {
+
         GameOver = true;
+        isPlaying = false;
+
         int saveScore = PlayerPrefs.GetInt("HighScore");
         if (score > saveScore)
         {
             PlayerPrefs.SetInt("HighScore", score);
         }
         SetPageState(PageState.GameOver);
+        OnGameOverConfirmed();
     }
     void OnPlayerScore()
     {
@@ -112,17 +119,37 @@ public class GameMenager : MonoBehaviour
 
     public void ConfirmGameOver()
     {
+
         //odpala się gdy naciskamy replay button
         OnGameOverConfirmed();
         ScoreText.text = "0";
         SetPageState(PageState.Start);
+
     }
+
     public void StartGame()
     {
+      if (isPlaying)
+      {
+        return;
+      }
+
+      if (GameOver)
+      {
+        ConfirmGameOver();
+      }
+
+      SetPageState(PageState.Countdown);
         //odpala się gdy naciskamy Start button
-        SetPageState(PageState.Countdown); 
+      isPlaying = true;
+    }
+    void Update()
+    {
+      if (Input.GetKeyDown(KeyCode.Space))
+      {
+          StartGame();
+
+      }
 
     }
-    
-
 }
