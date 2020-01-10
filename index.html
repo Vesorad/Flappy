@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
@@ -18,8 +18,6 @@
       <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">Mateusz Kolasiński - CV
-        </div>
     </div>
         <style>
 .card {
@@ -52,36 +50,50 @@
 .container {
   padding: 0px 16px;
 }
+.contact-card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 20px;
+  display: inline-flex;
+  margin: 20px;
+}
+.contact-card > p {
+  font-size: 1.2em;
+}
 </style>
-     <p>Contact with Tel: 48 690-993-699</p>
-        <p>Email: Matikola98@gmail.com</p>
-    <p>
-    My CV: <a href="CV.pdf">
-   <img border="0" alt="W3Schools" src="PDF-IMG.png" width="40" height="40" align="middle">
-   </a>
-   </p>
-   <h3> Links to my other projects: </h3>
-   <p>
-      <p> </p>
-       <div class="card2">
-     <a href="https://vesorad.github.io/Number_Wizard/">
-   <img border="0" alt="Avatar" style="width:100%" src="NW.png">
-         <div class="container">
-        
-   </a>
-   </p>
+<h1 class="title">Mateusz Kolasiński - GameDev (wannabe)</h1><br /><br />
+<div class="contact-card">
+  <div style="padding: 10px;">
+    <h2>Contact me:</h2><br />
+    <p>tel: +48 690-993-699</p>
+    <p>email: matikola98@gmail.com</p>
+  </div>
+  <div style="width: 2px; background-color: black; margin: 10px;" > </div>
+  <div style="padding: 10px;">
+    <h2>My CV</h2><br />
+    <a href="CV.pdf">
+      <img border="0" alt="W3Schools" src="PDF-IMG.png" width="40" height="40" align="middle">
+    </a>
+  </div>
+</div>
+<div style="padding-top: 20px;">
+  <h2 style="margin-bottom: 20px;"> Links to my other projects: </h2>
+  <div style="display: flex">
+    <div class="contact-card">
+      <img border="0" alt="Avatar" src="NW.png">
+      <div style="padding-left: 10px">
+        <h3>Number Wizard</h3>
+        <a href="https://vesorad.github.io/Number_Wizard/">Play</a>
       </div>
-         </div>
-        <p> </p>
-        <p>
-            <div class="card">
-     <a href="https://vesorad.github.io/Block-Des/">
-   <img border="0" alt="Avatar" style="width:100%" src=Block-Des.png  >
-         <div class="container">
-         </div>
-   </a>
-   </p>
-    <p> </p>
-   
+    </div>
+    <div class="contact-card">
+      <img border="0" alt="Avatar" src="Block-Des.png">
+      <div style="padding-left: 10px">
+        <h3>BlockDes</h3>
+        <a href="https://vesorad.github.io/Number_Wizard/">Play</a>
+      </div>
+    </div>
+  </div>
+</div>
   </body>
 </html>
